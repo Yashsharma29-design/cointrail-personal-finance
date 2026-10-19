@@ -84,7 +84,7 @@ export function createSeed(today: Date = new Date()): FinanceState {
   };
 
   const requests: PaymentRequest[] = [
-    { id: "r1", direction: "incoming", name: "Rohan Kapoor", handle: "rohank@ybl", amount: 1250, note: "Dinner at Toit 🍺", date: daysAgo(0, 9), status: "pending" },
+    { id: "r1", direction: "incoming", name: "Rohan Kapoor", handle: "rohank@ybl", amount: 1250, note: "Dinner at Toit", date: daysAgo(0, 9), status: "pending" },
     { id: "r2", direction: "incoming", name: "Ananya Iyer", handle: "ananya.iyer@okicici", amount: 3400, note: "Goa trip — villa share", date: daysAgo(2), status: "pending" },
     { id: "r3", direction: "incoming", name: "Kabir Singh", handle: "kabir@paytm", amount: 640, note: "Airport cab split", date: daysAgo(4), status: "pending" },
     { id: "r4", direction: "outgoing", name: "Priya Nair", handle: "priya.nair@oksbi", amount: 2200, note: "Prateek Kuhad concert tickets", date: daysAgo(1), status: "pending" },

@@ -75,7 +75,7 @@ function Dashboard() {
 
       <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
         {/* Balance card */}
-        <section className="grain relative overflow-hidden rounded-3xl border border-border bg-balance p-6 shadow-card animate-rise sm:p-8 lg:col-span-2">
+        <section className="grain relative flex flex-col overflow-hidden rounded-3xl border border-border bg-balance p-6 shadow-card animate-rise sm:p-8 lg:col-span-2">
           <div className="pointer-events-none absolute -right-10 -top-10 size-48 rounded-full border border-primary/20" />
           <div className="pointer-events-none absolute -right-2 top-6 size-28 rounded-full border border-primary/25" />
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -101,7 +101,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2 lg:mt-auto lg:pt-6">
             <Button variant="hero" size="sm" asChild><Link to="/send"><Send /> Send</Link></Button>
             <Button variant="soft" size="sm" asChild><Link to="/requests"><HandCoins /> Request</Link></Button>
             <Button variant="soft" size="sm" onClick={() => setDialogOpen(true)}><Plus /> Log expense</Button>
@@ -133,7 +133,7 @@ function Dashboard() {
             ))}
             {pending.length === 0 && (
               <div className="grid flex-1 place-items-center rounded-2xl border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
-                You're all settled up 🎉
+                You're all settled up
               </div>
             )}
           </div>
