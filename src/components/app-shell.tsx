@@ -33,7 +33,7 @@ export function Logo({ className }: { className?: string }) {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const { profile, balance, requests } = useFinance();
+  const { profile, balance, requests, hydrated } = useFinance();
   const pendingIncoming = requests.filter((r) => r.direction === "incoming" && r.status === "pending").length;
   const isActive = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
 
@@ -91,7 +91,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </header>
 
       <main className="px-4 pb-28 pt-6 sm:px-6 lg:ml-64 lg:px-10 lg:pb-12 lg:pt-10">
-        <div className="mx-auto max-w-6xl">{children}</div>
+        <div className="mx-auto max-w-6xl">{hydrated ? children : <ShellSkeleton />}</div>
       </main>
 
       {/* Mobile bottom nav */}
@@ -126,6 +126,19 @@ export function AppShell({ children }: { children: ReactNode }) {
           })}
         </ul>
       </nav>
+    </div>
+  );
+}
+
+function ShellSkeleton() {
+  return (
+    <div className="animate-pulse" aria-busy="true" aria-label="Loading your wallet">
+      <div className="h-4 w-32 rounded bg-surface-2" />
+      <div className="mt-3 h-10 w-72 rounded-lg bg-surface-2" />
+      <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div className="h-64 rounded-3xl bg-surface lg:col-span-2" />
+        <div className="h-64 rounded-3xl bg-surface" />
+      </div>
     </div>
   );
 }

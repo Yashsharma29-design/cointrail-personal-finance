@@ -180,8 +180,8 @@ function SendPage() {
                 <Input placeholder="What's it for?" maxLength={60} value={note} onChange={(e) => setNote(e.target.value)} className="h-11" />
               </Field>
               <Field label="Pay using">
-                <div className="grid grid-cols-4 gap-1 rounded-xl bg-surface-2 p-1">
-                  {PAY_METHODS.filter((m) => m !== "Cash").concat([]).map((m) => (
+                <div className="grid grid-cols-3 gap-1 rounded-xl bg-surface-2 p-1">
+                  {PAY_METHODS.filter((m) => m !== "Cash").map((m) => (
                     <button
                       key={m}
                       onClick={() => setMethod(m)}
@@ -190,7 +190,6 @@ function SendPage() {
                       {m}
                     </button>
                   ))}
-                  <span className="grid place-items-center text-[10px] text-muted-foreground">Instant</span>
                 </div>
               </Field>
             </div>
