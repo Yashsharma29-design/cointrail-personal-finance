@@ -12,4 +12,31 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // Pre-bundle deps used by lazily split routes so the dev optimizer doesn't re-run
+    // mid-session (which can load two React copies and crash hooks).
+    optimizeDeps: {
+      include: [
+        "react",
+        "react-dom",
+        "react-dom/client",
+        "@radix-ui/react-alert-dialog",
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-label",
+        "@radix-ui/react-select",
+        "@radix-ui/react-slot",
+        "@radix-ui/react-switch",
+        "@radix-ui/react-tabs",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge",
+        "date-fns",
+        "recharts",
+        "sonner",
+        "zod",
+        "lucide-react",
+      ],
+    },
+  },
 });
