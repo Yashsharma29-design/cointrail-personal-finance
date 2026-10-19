@@ -60,7 +60,7 @@ function SendPage() {
   const addNew = () => {
     if (newName.trim().length < 2) return setNewErr("Enter the person's name");
     const h = handleSchema.safeParse(newHandle);
-    if (!h.success) return setNewErr(h.error.issues[0].message);
+    if (!h.success) return setNewErr(h.error.issues[0]?.message ?? "Invalid UPI ID");
     const c = addContact({ name: newName.trim(), handle: h.data });
     setNewName("");
     setNewHandle("");

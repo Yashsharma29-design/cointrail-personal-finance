@@ -111,7 +111,7 @@ function AnalyticsPage() {
   );
 }
 
-function Kpi({ label, value, sub, tone }: { label: string; value: string; sub?: string; tone?: "income" | "expense" }) {
+function Kpi({ label, value, sub, tone }: { label: string; value: string; sub?: string | undefined; tone?: "income" | "expense" }) {
   return (
     <div className="panel p-5">
       <p className="text-xs font-medium text-muted-foreground">{label}</p>

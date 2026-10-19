@@ -79,7 +79,7 @@ export function TransactionDialog({
   const switchType = (t: TxType) => {
     setType(t);
     const list: readonly string[] = t === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
-    if (!list.includes(category)) setCategory(list[0]);
+    if (!list.includes(category)) setCategory(list[0] ?? "Other");
   };
 
   const submit = (e: React.FormEvent) => {
@@ -93,7 +93,7 @@ export function TransactionDialog({
     }
     // Keep original time-of-day when editing; use now for new entries on today.
     const base = editing ? new Date(editing.date) : new Date();
-    const [y, m, d] = date.split("-").map(Number);
+    const [y = 0, m = 1, d = 1] = date.split("-").map(Number);
     const when = new Date(y, m - 1, d, base.getHours(), base.getMinutes()).toISOString();
     const payload = { type, amount: parsed.data.amount, description: parsed.data.description, category, date: when, method, status };
     if (editing) {
@@ -130,7 +130,7 @@ export function TransactionDialog({
             ))}
           </div>
 
-          <Field label="Amount" error={errors.amount}>
+          <Field label="Amount" error={errors["amount"]}>
             <div className="relative">
               <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-display text-lg text-muted-foreground">₹</span>
               <Input
@@ -147,7 +147,7 @@ export function TransactionDialog({
             </div>
           </Field>
 
-          <Field label="Description" error={errors.description}>
+          <Field label="Description" error={errors["description"]}>
             <Input placeholder="e.g. Swiggy — Friday dinner" value={description} onChange={(e) => setDescription(e.target.value)} className="h-11" />
           </Field>
 
@@ -160,7 +160,7 @@ export function TransactionDialog({
                 </SelectContent>
               </Select>
             </Field>
-            <Field label="Date" error={errors.date}>
+            <Field label="Date" error={errors["date"]}>
               <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="h-11" />
             </Field>
             <Field label="Paid via">
@@ -192,7 +192,7 @@ export function TransactionDialog({
   );
 }
 
-export function Field({ label, error, children }: { label: string; error?: string; children: ReactNode }) {
+export function Field({ label, error, children }: { label: string; error?: string | undefined; children: ReactNode }) {
   return (
     <div className="grid gap-1.5">
       <Label className="text-xs font-semibold text-muted-foreground">{label}</Label>

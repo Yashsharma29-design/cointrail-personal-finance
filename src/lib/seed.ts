@@ -36,7 +36,7 @@ function iso(y: number, m: number, d: number, h: number, min: number) {
 
 export function createSeed(today: Date = new Date()): FinanceState {
   const rand = mulberry32(20261019);
-  const pick = <T,>(arr: T[]) => arr[Math.floor(rand() * arr.length)];
+  const pick = <T,>(arr: T[]): T => arr[Math.floor(rand() * arr.length)] as T;
   const between = (a: number, b: number) => Math.round(a + rand() * (b - a));
   const txs: Transaction[] = [];
   let n = 0;

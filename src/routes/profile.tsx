@@ -103,10 +103,10 @@ function ProfilePage() {
         <form onSubmit={save} className="panel grid gap-4 p-5 sm:p-6 lg:col-span-2">
           <h2 className="text-lg font-semibold">Personal details</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Full name" error={errors.name}><Input className="h-11" value={form.name} onChange={set("name")} /></Field>
-            <Field label="Email" error={errors.email}><Input className="h-11" type="email" value={form.email} onChange={set("email")} /></Field>
-            <Field label="UPI ID" error={errors.handle}><Input className="h-11" value={form.handle} onChange={set("handle")} /></Field>
-            <Field label="Phone" error={errors.phone}><Input className="h-11" value={form.phone} onChange={set("phone")} /></Field>
+            <Field label="Full name" error={errors["name"]}><Input className="h-11" value={form.name} onChange={set("name")} /></Field>
+            <Field label="Email" error={errors["email"]}><Input className="h-11" type="email" value={form.email} onChange={set("email")} /></Field>
+            <Field label="UPI ID" error={errors["handle"]}><Input className="h-11" value={form.handle} onChange={set("handle")} /></Field>
+            <Field label="Phone" error={errors["phone"]}><Input className="h-11" value={form.phone} onChange={set("phone")} /></Field>
           </div>
           <div className="flex justify-end">
             <Button type="submit" variant="hero">Save changes</Button>
