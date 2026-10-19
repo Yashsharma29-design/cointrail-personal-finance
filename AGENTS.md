@@ -14,3 +14,4 @@
 - Pure money logic (balance, payment validation, aggregations) lives in `src/lib/finance.ts` and is unit-tested in `src/test/finance.test.ts` — keep it free of React/browser APIs.
 - Demo seed data is generated deterministically in `src/lib/seed.ts` (seeded PRNG) so server and client render the same output.
 - `AppShell` renders page content only after the store hydrates from localStorage, to avoid timezone/storage hydration mismatches.
+- Libraries used by pages are listed in vite.config.ts optimizeDeps.include so the dev server pre-bundles them once; when adding a new UI library, add it there (prevents duplicate-React crashes).
